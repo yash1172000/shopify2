@@ -1,0 +1,51 @@
+{% assign collection = collections[section.settings.collectionf] %}
+
+<div class="they">
+  {% for product in collection.products limit: 4 %}
+    <div class="yash">
+      <div class="aniket">
+        <img
+          src="{{ product.featured_image | img_url: '600x600' }}"
+          alt="{{product.featured_image.alt}}"
+        >
+        <span class="pr_title">{{ product.title }}</span>
+        <button><a href="{{product.url}}">VIEW PRODUCT</a></button>
+        <button class="show-faq">yes</button>
+      </div>
+
+      <div class="faq-kaka">
+        {% if product.metafields.custom.custom_faq != blank %}
+          <span class="sub-title">{{ product.metafields.custom.custom_faq }}</span>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="prac-div">
+  <ul id="prac-ul">
+    <li>swift</li>
+    <li>punch</li>
+    <li>nexon</li>
+    <li>safari</li>
+    <li>scorpio</li>
+    <li>BMW</li>
+  </ul>
+</div>
+{% schema %}
+  {
+  "name":"collection_faq",
+    "settings":[
+      {
+        "type": "collection",
+        "id": "collectionf",
+        "label": "Collection of Products"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom FAQ"
+      }
+    ]
+}
+{% endschema %}

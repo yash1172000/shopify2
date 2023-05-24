@@ -1,0 +1,129 @@
+<section>
+  <div class="pr-faq-main">
+    {% assign collection = collections[section.settings.collection] %}
+    <input id="search" type="text" placeholder="Search...">
+    {% if collection != blank %}
+      <div class="pr-faq-section-main">
+        {% for product in collection.products %}
+          <div class="pr-faq-section">
+            <div class="pr-details">
+              <img src="{{ product.featured_image | img_url: '300x300' }}">
+              <div class="pr-inner">
+                <span class="pr-title">{{ product.title }}</span>
+                <span class="view-product">{{ 'View Product' | link_to: product.url }}</span>
+              </div>
+              <button class="show-faq">Show FAQ</button>
+            </div>
+            {% if product.metafields.custom.custom_faq != blank %}
+              {{ product.metafields.custom.custom_faq }}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <a href="#" id="loadMore">Load More</a>
+  </div>
+  <br>
+  <br>
+  <style>
+    .addClass{
+      color: yellow;
+      text-decoration: underline;
+      font-size: 25px;
+    }
+    .prac-event div{
+      background-color: green;
+    }
+  </style>
+  <div class="prac-div">
+    <button class="prac-button">click here</button>
+    <div class="prac-sub-div">
+      <ul id="prac-ul" class="prac-ul1">
+        <li class="prac-list-1">swift</li>
+        <li class="prac-list-2">punch</li>
+        <li class="prac-list-1">nexon</li>
+        <li class="prac-list-2">safari</li>
+        <li class="prac-list-1">scorpio</li>
+        <li class="prac-list-2">BMW</li>
+      </ul>
+      <br>
+
+      <br>
+      <div class="prac-event" style="border: 2px solid grey; background-color: blue; position: relative;">
+        <h2>hello...</h2>
+        <p>sddgfds;v dpogdsvdo dpgvdcgvkfcf df[bdfkbdfp ds[pfvsfpvbf sldv[xdfgblf fpdvb[fgboldfv</p>
+        <p>sddgfds;v dpogdsvdo dpgvdcgvkfcf df[bdfkbdfp ds[pfvsfpvbf dfv</p>
+      </div>
+      <div class="prac-serialize" id="prac-select-div"></div>
+      <br>
+      <form action="">
+        First name: <input type="text" name="FirstName" value=""><br>
+        Last name: <input type="text" name="LastName" value=""><br>
+      </form>
+
+      <select id="prac-select" name="actors">
+        <option>Uthappa</option>
+        <option selected="selected">Kattapa</option>
+        <option>Veerappa</option>
+        <option>Bahubali</option>
+        <option>Bhallal Dev</option>
+        <option>Awantika</option>
+      </select>
+    </div>
+  </div>
+</section>
+<script>
+    //get input
+  let input = document.getElementById("search");
+  //get list of value
+  let data = document.querySelectorAll(".pr-faq-section-main .pr-faq-section");
+  let list = document.querySelectorAll(".pr-faq-section-main .pr-title");
+  // alert(list.length);
+
+  //function search on the list.
+  function search (){
+    for(let i = 0; i < list.length; i += 1){
+        //console.log(input.value.toLowerCase());
+     //check if the element contains the value of the input
+     if(list[i].innerText.toLowerCase().includes(input.value.toLowerCase())){
+       data[i].style.display = "block";
+       $("#loadMore").hide();
+     }else{
+       data[i].style.display = "none";
+     }
+    }
+  }
+  $('input#search').on('keyup', function()
+    {
+        var self = $( this );
+
+        if ( self.val() != '' ) {
+            self.removeClass('search-inactive');
+            self.addClass('search-active');
+        } else {
+            self.addClass('search-inactive');
+            self.removeClass('search-active');
+            location.reload();
+        }
+    });
+  //to the change run search.
+  input.addEventListener('input', search);
+</script>
+
+{% schema %}
+{
+  "name": "Product FAQS",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product FAQS"
+    }
+  ]
+}
+{% endschema %}

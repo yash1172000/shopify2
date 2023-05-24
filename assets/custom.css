@@ -1,0 +1,93 @@
+// For Load More Button and Insert Field
+
+.noContent {
+  color: #000 !important;
+  background-color: transparent !important;
+  pointer-events: none;
+}
+
+input{
+	background-color: #2980b9;
+	color:white;
+	margin: 0;
+	padding: 10px 20px;
+	font-size: 24px;
+	font-weight: normal;
+  width: calc(100% - 40px);
+  border: none;
+}
+input:hover{
+  	background-color: #3285c4;
+}
+
+
+// For FAQ Page
+
+div#shopify-section-template--18582563029293__e72e0104-07de-400e-9141-6fb4e3f72d91 {
+    width: 100%;
+}
+.pr-details {
+    display: flex;
+    width: 97%; 
+    margin-left: 5%;
+    border: 1px solid;
+    padding: 27px;
+}
+.pr-details img {
+    width: 6%;
+}
+.pr-inner {
+    display: grid;
+    margin-left: 33px;
+}
+.view-product a {
+    border: 1px solid black;
+    color: black;
+    background-color: #efefef;
+    padding: 11px;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-left: 10px;
+    border-radius: 0px 20px;
+}
+button.show-faq {
+    margin-left: 64%;
+    position: relative;
+}
+span.pr-title {
+    margin-bottom: 10px;
+    font-size: larger;
+    font-weight: bold;
+    width: 228px;
+}
+
+button.show-faq:after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 20px;
+    left: 82px;
+}
+
+#loadMore {
+  width: 200px;
+  color: #fff;
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background-color: blue;
+  transition: .3s;
+}
+#loadMore:hover {
+  color: blue;
+  background-color: #fff;
+  border: 1px solid blue;
+  text-decoration: none;
+}

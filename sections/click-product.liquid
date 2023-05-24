@@ -1,0 +1,77 @@
+<section>
+  <div class="main-click-product">
+    <div class="sub-click-product">
+      <img src="{{ section.settings.product_img | img_url: 'master' }}">
+    </div>
+    <div class="click-product">
+      {% for block in section.blocks %}
+        {% assign product = block.settings.product_detail %}
+        <div class="product-details">
+          <img src="{{ product.featured_image | img_url: '600x600' }}" alt="{{product.featured_image.alt}}">
+          <br>
+          {{ product.price | money }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+    "name": "Product-img",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "product_img",
+        "label": "Selecting Product Image"
+      },
+      {
+        "type": "textarea",
+        "id": "circle_1",
+        "label": "Selecting Circle-1"
+      },
+      {
+        "type": "range",
+        "id": "range_for_circle_1",
+        "min": 20,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "label": "Selecting Range For Circle 1",
+        "default": 30
+       },
+      {
+        "type": "textarea",
+        "id": "circle_2",
+        "label": "Selecting Circle-2"
+      },
+      {
+        "type": "range",
+        "id": "range_for_circle_2",
+        "min": 20,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "label": "Selecting Range For Circle 2",
+        "default": 30
+       }
+    ],
+  "blocks":[
+      {
+          "type": "product",
+          "name": "Product-detail",
+          "settings": [
+            {
+              "type": "product",
+              "id": "product_detail",
+              "label": "Selecting Products"
+            }
+          ]
+      }
+  ],
+    "presets": [
+      {
+        "name": "Product-img"
+      }
+    ]
+}
+{% endschema %}

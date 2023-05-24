@@ -1,0 +1,29 @@
+<div class=”page-width”>
+ <header class=”section-header text-center”>
+ <h1 class=”section-header__title h2">{{ page.title }}</h1>
+ </header>
+ <div class=”breadcrumbs”>
+ {% render ‘breadcrumbs’ %}
+ </div>
+ <div class=”grid”>
+ <div class=”grid__item medium-up — four-fifths medium-up — push-one-tenth”>
+ <div class=”rte”>
+ {{ page.content }}
+ <div class=”faqpage”>
+ {% section 'faq' %}
+ </div>
+ </div>
+ </div>
+</div>
+<script src=”{{ ‘jquery_3.4.1.js’ | asset_url }}” type=”text/javascript”></script>
+<script type=”text/javascript” src=”{{ ‘jquery_accordion.js’ | asset_url }}”></script>
+<script type=”text/javascript”>
+(function($){
+$(document).ready(function() {
+$(‘.accordion’).accordion({
+defaultOpen: ‘1’,
+cookieName: ‘accordion_nav’
+});
+});
+})(jQuery);
+</script>
